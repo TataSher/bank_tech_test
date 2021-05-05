@@ -14,7 +14,12 @@ User Data is kept in memory (it is not stored in a database)
 1. Clone the repository
 2. Use <bundle install> to install the gems in the Gemfile
 3. Open the REPL (IRB or similar)
-4. require './lib/account.rb''
+4. Type < require './lib/account.rb' >
+5. To start an account type < account = Account.new >
+6. To make a deposit with a required sum type < account.make_deposit(sum) >
+7. To make a withdrawal with a required sum type < account.make_withdrawal(sum) >
+8. To print a statement type < account.print_statement(account.statement) >
+
 
 
 ### An example of how the program can be used.
@@ -34,7 +39,7 @@ date       || credit    || debit   || balance
 
 
 ## Example of Use:
-
+```
 $ :001 > require './lib/account.rb'
  => true 
 $ :002 > account = Account.new
@@ -47,3 +52,4 @@ $ :005 > account.statement
 date       || credit    || debit   || balance
 05/05/2021 || 100.00 || 0.00 || 100.00 
 05/05/2021 || 0.00 || 50.00 || 150.00 
+```
