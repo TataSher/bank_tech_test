@@ -1,10 +1,13 @@
+# frozen_string_literal: true
+
 # Account will allow users to make deposits/withdrawals and see statements
+
 class Account
   def initialize
     @time = Time.now
     @transfers = []
   end
-  
+
   def make_deposit(deposit)
     @deposit = deposit
     @transfers << { date: @time.strftime('%d/%m/%Y'), credit: @deposit, debit: 0 }
@@ -20,14 +23,19 @@ class Account
 
   def statement
     n = 0
-    display = ["date       || credit    || debit   || balance"]
+    display = ['date       || credit    || debit   || balance']
     while n < @transfers.length
       display << "#{@transfers[n][:date]} || #{format('%.2f', @transfers[n][:credit])} || #{format('%.2f', @transfers[n][:debit])} || #{balance(n)} "
       n += 1
     end
     display = display.join("\n")
+    display
   end
-  
+
+  def print_statement(statement)
+    puts statement
+  end   
+
   private
 
   def balance(n)

@@ -76,4 +76,18 @@ describe Account do
     expect(account.statement).to include('100.00')
   end
 
+  describe '#print_statement' do
+    it 'prints statement' do
+      account = Account.new
+      account.make_deposit(500.00)
+      account.make_withdrawal(100)
+      expect{ account.print_statement(account.statement) }.to output(STATEMENT_EXAMPLE).to_stdout
+    end
+  end
+  STATEMENT_EXAMPLE = "date       || credit    || debit   || balance
+04/05/2021 || 500.00 || 0.00 || 500.00 \n04/05/2021 || 0.00 || 100.00 || 400.00 \n"
+
 end
+
+# "date       || credit    || debit   || balance\n04/05/2021 || 500.00 || 0.00 || 500.00\n04/05/2021 || 0.00 || 100.00 || 400.00 \n"
+# "date       || credit    || debit   || balance\n04/05/2021 || 500.00 || 0.00 || 500.00 \n04/05/2021 || 0.00 || 100.00 || 400.00 \n"
