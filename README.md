@@ -11,10 +11,10 @@ User Data is kept in memory (it is not stored in a database)
 
 ### User Instructions
 
-* Clone the repository
-* Use <bundle install> to install the gems in the Gemfile
-* Open the REPL (IRB or similar)
-* require '
+1. Clone the repository
+2. Use <bundle install> to install the gems in the Gemfile
+3. Open the REPL (IRB or similar)
+4. require './lib/account.rb''
 
 
 ### An example of how the program can be used.
@@ -31,3 +31,7 @@ date       || credit    || debit   || balance
 13/01/2012 || 2000.00   ||         || 3000.00
 10/01/2012 || 1000.00   ||         || 1000.00
 ```
+
+Input                            |   Output
+account.make_deposit(500.00)     |   'Deposit 04/05/2021: £500.00'
+account.make_withdrawal(100.00)  |   'Withdrawal 04/05/2021: £100.00'

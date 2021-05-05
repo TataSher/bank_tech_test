@@ -38,14 +38,21 @@ describe Account do
     account = Account.new
     account.make_deposit(500.00)
     account.make_withdrawal(100)
-    expect(account.print_statement).to include('400.00')
+    expect(account.statement).to include('400.00')
   end
 
   it 'prints a statement with balance adding to deposit ' do
     account = Account.new
     account.make_deposit(500.00)
     account.make_deposit(100)
-    expect(account.print_statement).to include('600.00')
+    expect(account.statement).to include('600.00')
   end
+
+   it 'prints the head of the table' do
+     account = Account.new
+     account.make_deposit(500.00)
+     account.make_deposit(100)
+     expect(account.statement).to include('date       || credit    || debit   || balance')
+   end
 
 end

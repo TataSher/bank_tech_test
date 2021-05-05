@@ -2,23 +2,31 @@
 class Account
   def initialize
     @time = Time.now
-    @statement = []
+    @transfers = []
   end
   
   def make_deposit(deposit)
     @deposit = deposit
-    @statement << {credit: @deposit, debit: 0, date: @time.strftime('%d/%m/%Y')}
+    @transfers << { date: @time.strftime('%d/%m/%Y'), credit: @deposit, debit: 0 }
     "Deposit #{@time.strftime('%d/%m/%Y')}: £#{format('%.2f', @deposit)}"
   end
 
   def make_withdrawal(withdrawal)
     @time = Time.now
     @withdrawal = withdrawal
-    @statement << {credit: 0, debit: -@withdrawal, date: @time.strftime('%d/%m/%Y')}
+    @transfers << { date: @time.strftime('%d/%m/%Y'), credit: 0, debit: -@withdrawal }
     "Withdrawal #{@time.strftime('%d/%m/%Y')}: £#{format('%.2f', @withdrawal)}"
   end
 
-  def print_statement
-   format('%.2f',(@statement[0][:credit] + @statement[1][:debit] + @statement[1][:credit]))
+  def statement
+    n = 0
+    "date       || credit    || debit   || balance
+    #{balance(n)}"
+  end
+  
+  private
+
+  def balance(n)
+    format('%.2f',(@transfers[n][:credit] + @transfers[n+1][:debit] + @transfers[n+1][:credit]))
   end
 end
