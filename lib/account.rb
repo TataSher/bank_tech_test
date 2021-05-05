@@ -26,7 +26,6 @@ class Account
       n += 1
     end
     display = display.join("\n")
-    puts display
   end
   
   private
@@ -35,7 +34,7 @@ class Account
     if n == 0
       format('%.2f',(@transfers[n][:credit]))
     else
-      format('%.2f',(@transfers[n-1][:credit] + @transfers[n][:debit] - @transfers[n][:credit]))   
+      format('%.2f',(@transfers[n-1][:credit] - @transfers[n][:debit] + @transfers[n][:credit]))   
     end
   end
 end

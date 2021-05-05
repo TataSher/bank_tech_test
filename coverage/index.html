@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2021-05-05T16:19:26+01:00">2021-05-05T16:19:26+01:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2021-05-05T16:32:58+01:00">2021-05-05T16:32:58+01:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -318,7 +318,7 @@
 
             
 
-            <code class="ruby">    @transfers &lt;&lt; { date: @time.strftime(&#39;%d/%m/%Y&#39;), credit: 0, debit: -@withdrawal }</code>
+            <code class="ruby">    @transfers &lt;&lt; { date: @time.strftime(&#39;%d/%m/%Y&#39;), credit: 0, debit: @withdrawal }</code>
           </li>
         </div>
       
@@ -538,7 +538,7 @@
 
             
 
-            <code class="ruby">      format(&#39;%.2f&#39;,(@transfers[n-1][:credit] + @transfers[n][:debit] + @transfers[n][:credit]))   </code>
+            <code class="ruby">      format(&#39;%.2f&#39;,(@transfers[n-1][:credit] - @transfers[n][:debit] + @transfers[n][:credit]))   </code>
           </li>
         </div>
       
