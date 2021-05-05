@@ -69,4 +69,11 @@ describe Account do
     expect(account.statement).to include('500.00')
   end
 
+  it 'prints the credit in the table' do
+    account = Account.new
+    account.make_deposit(500.00)
+    account.make_withdrawal(100)
+    expect(account.statement).to include('100.00')
+  end
+
 end

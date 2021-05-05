@@ -14,21 +14,31 @@ class Account
   def make_withdrawal(withdrawal)
     @time = Time.now
     @withdrawal = withdrawal
-    @transfers << { date: @time.strftime('%d/%m/%Y'), credit: 0, debit: -@withdrawal }
+    @transfers << { date: @time.strftime('%d/%m/%Y'), credit: 0, debit: @withdrawal }
     "Withdrawal #{@time.strftime('%d/%m/%Y')}: £#{format('%.2f', @withdrawal)}"
   end
 
   def statement
     n = 0
-    p "date       || credit    || debit   || balance
-    #{@transfers[n][:date]} || #{format('%.2f', @transfers[n][:credit])} ||#{balance(n)}"
+    display = ["date       || credit    || debit   || balance"]
+    while n < @transfers.length
+      display << "#{@transfers[n][:date]} || #{format('%.2f', @transfers[n][:credit])} || #{format('%.2f', @transfers[n][:debit])} || #{balance(n)} "
+      n += 1
+    end
+    display = display.join("\n")
+    puts display
   end
   
   private
 
   def balance(n)
-    format('%.2f',(@transfers[n][:credit] + @transfers[n+1][:debit] + @transfers[n+1][:credit]))
+    if n == 0
+      format('%.2f',(@transfers[n][:credit]))
+    else
+      format('%.2f',(@transfers[n-1][:credit] + @transfers[n][:debit] - @transfers[n][:credit]))   
+    end
   end
 end
 
 
+# print "#{@transfers[n][:date]} || #{format('%.2f', @transfers[n][:credit])} || #{format('%.2f', @transfers[n][:debit])} ||#{balance(n)}"
