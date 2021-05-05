@@ -20,8 +20,8 @@ class Account
 
   def statement
     n = 0
-    "date       || credit    || debit   || balance
-    #{balance(n)}"
+    p "date       || credit    || debit   || balance
+    #{@transfers[n][:date]} || #{format('%.2f', @transfers[n][:credit])} ||#{balance(n)}"
   end
   
   private
@@ -30,3 +30,5 @@ class Account
     format('%.2f',(@transfers[n][:credit] + @transfers[n+1][:debit] + @transfers[n+1][:credit]))
   end
 end
+
+

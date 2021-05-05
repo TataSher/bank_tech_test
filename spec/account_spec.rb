@@ -55,4 +55,18 @@ describe Account do
      expect(account.statement).to include('date       || credit    || debit   || balance')
    end
 
+   it 'prints the date in the table' do
+    account = Account.new
+    account.make_deposit(500.00)
+    account.make_deposit(100)
+    expect(account.statement).to include('04/05/2021')
+  end
+
+  it 'prints the credit in the table' do
+    account = Account.new
+    account.make_deposit(500.00)
+    account.make_deposit(100)
+    expect(account.statement).to include('500.00')
+  end
+
 end
