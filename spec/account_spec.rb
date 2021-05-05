@@ -1,11 +1,14 @@
 # frozen_string_literal: true
 
 require 'account'
+require 'timecop'
 
 describe Account do
     before do
-      allow(Time).to receive(:now).and_return(@time_now)
-      allow(@time_now).to receive(:strftime).and_return('04/05/2021')
+      Timecop.freeze(Time.new(2021, 05, 04))
+    end
+    after do
+      Timecop.return
     end
   
   it 'can make a deposit' do
