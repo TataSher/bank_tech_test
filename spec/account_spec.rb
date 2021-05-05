@@ -34,10 +34,18 @@ describe Account do
     expect(account.make_withdrawal(100)).to eq('Withdrawal 04/05/2021: £100.00')
   end
 
-  it 'prints a statement with date and deposit/withdrawal' do
+  it 'prints a statement with balance substracting withdrawal' do
     account = Account.new
     account.make_deposit(500.00)
     account.make_withdrawal(100)
     expect(account.print_statement).to include('400.00')
   end
+
+  it 'prints a statement with balance adding to deposit ' do
+    account = Account.new
+    account.make_deposit(500.00)
+    account.make_deposit(100)
+    expect(account.print_statement).to include('600.00')
+  end
+
 end

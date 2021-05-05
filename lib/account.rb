@@ -19,6 +19,6 @@ class Account
   end
 
   def print_statement
-   format('%.2f',(@statement[0][:credit] + @statement[1][:debit]))
+   format('%.2f',(@statement[0][:credit] + @statement[1][:debit] + @statement[1][:credit]))
   end
 end
