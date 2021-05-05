@@ -33,6 +33,11 @@ describe Account do
       account.make_deposit(500.00)
       expect(account.make_withdrawal(100)).to eq('Withdrawal 04/05/2021: £100.00')
     end
+    it 'throws error if withdrawing more than in account' do
+      account = Account.new
+      account.make_deposit(500.00)
+      expect { account.make_withdrawal(600) }.to raise_error('Insufficient Funds')
+    end
   end
   describe '#statement' do
     it 'prints a statement with balance substracting withdrawal' do
