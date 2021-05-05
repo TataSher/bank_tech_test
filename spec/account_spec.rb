@@ -5,6 +5,7 @@ require 'timecop'
 
 describe Account do
   before do
+    account = Account.new
     Timecop.freeze(Time.new(2021, 05, 04))
   end
   after do
@@ -31,5 +32,12 @@ describe Account do
     account = Account.new
     account.make_deposit(500.00)
     expect(account.make_withdrawal(100)).to eq('Withdrawal 04/05/2021: £100.00')
+  end
+
+  it 'prints a statement with date and deposit/withdrawal' do
+    account = Account.new
+    account.make_deposit(500.00)
+    account.make_withdrawal(100)
+    expect(account.print_statement).to include('400.00')
   end
 end
