@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'rspec/timecop'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
