@@ -48,7 +48,7 @@ $ :003 > account.make_deposit(100.00)
  => "Deposit 05/05/2021: £100.00" 
 $ :004 > account.make_withdrawal(50.00)
  => "Withdrawal 05/05/2021: £50.00" 
-$ :005 > account.statement
+$ :005 > account.print_statement(account.statement)
 date       || credit    || debit   || balance
 05/05/2021 || 100.00 || 0.00 || 100.00 
 05/05/2021 || 0.00 || 50.00 || 150.00 
