@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 # Account will allow users to make deposits/withdrawals and see statements
-
 class Account
   def initialize
     @time = Time.now
@@ -25,27 +24,26 @@ class Account
     n = 0
     display = ['date       || credit    || debit   || balance']
     while n < @transfers.length
-      display << "#{@transfers[n][:date]} || #{format('%.2f', @transfers[n][:credit])} || #{format('%.2f', @transfers[n][:debit])} || #{balance(n)} "
+      date = @transfers[n][:date]
+      credit = format('%.2f', @transfers[n][:credit])
+      debit = format('%.2f', @transfers[n][:debit])
+      display << "#{date} || #{credit} || #{debit} || #{balance(n)} "
       n += 1
     end
-    display = display.join("\n")
-    display
+    display.join("\n")
   end
 
   def print_statement(statement)
     puts statement
-  end   
+  end
 
   private
 
-  def balance(n)
-    if n == 0
-      format('%.2f',(@transfers[n][:credit]))
+  def balance(row)
+    if row.zero?
+      format('%.2f', (@transfers[row][:credit]))
     else
-      format('%.2f',(@transfers[n-1][:credit] - @transfers[n][:debit] + @transfers[n][:credit]))   
+      format('%.2f', (@transfers[row - 1][:credit] - @transfers[row][:debit] + @transfers[row][:credit]))
     end
   end
 end
-
-
-# print "#{@transfers[n][:date]} || #{format('%.2f', @transfers[n][:credit])} || #{format('%.2f', @transfers[n][:debit])} ||#{balance(n)}"

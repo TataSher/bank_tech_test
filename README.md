@@ -32,6 +32,18 @@ date       || credit    || debit   || balance
 10/01/2012 || 1000.00   ||         || 1000.00
 ```
 
-Input                            |   Output
-account.make_deposit(500.00)     |   'Deposit 04/05/2021: £500.00'
-account.make_withdrawal(100.00)  |   'Withdrawal 04/05/2021: £100.00'
+
+## Example of Use:
+
+$ :001 > require './lib/account.rb'
+ => true 
+$ :002 > account = Account.new
+ => #<Account:0x00000001423e1690 @time=2021-05-05 16:24:07.580854 +0100, @transfers=[]> 
+$ :003 > account.make_deposit(100.00)
+ => "Deposit 05/05/2021: £100.00" 
+$ :004 > account.make_withdrawal(50.00)
+ => "Withdrawal 05/05/2021: £50.00" 
+$ :005 > account.statement
+date       || credit    || debit   || balance
+05/05/2021 || 100.00 || 0.00 || 100.00 
+05/05/2021 || 0.00 || 50.00 || 150.00 
