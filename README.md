@@ -12,7 +12,7 @@ User Data is kept in memory (it is not stored in a database)
 ### User Instructions
 
 1. Clone the repository
-2. Use <bundle install> to install the gems in the Gemfile
+2. Use 'bundle install' to install the gems in the Gemfile
 3. Open the REPL (IRB or similar)
 4. Type < require './lib/account.rb' >
 5. To start an account type < account = Account.new >

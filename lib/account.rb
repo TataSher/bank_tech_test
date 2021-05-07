@@ -14,8 +14,8 @@ class Account
   end
 
   def make_withdrawal(withdrawal)
-    raise 'Insufficient Funds' if withdrawal > balance(@transfers.length-1).to_f
-   
+    raise 'Insufficient Funds' if withdrawal > balance(@transfers.length - 1).to_f
+
     @time = Time.now
     @withdrawal = withdrawal
     @transfers << { date: @time.strftime('%d/%m/%Y'), credit: 0, debit: @withdrawal }
