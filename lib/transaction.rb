@@ -11,6 +11,10 @@ class Transaction
   end
   
   def add_funds(sum)
-    @deposit = 100
+    @deposit = sum
+  end
+
+  def withdraw_funds(sum)
+    @withdrawal = sum
   end
 end
