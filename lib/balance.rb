@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'balance'
+
 # Calculates balance
 
 class Balance
@@ -10,7 +12,7 @@ class Balance
     @balance = 0
   end
   
-  def balance
+  def show
     if @transaction_number.zero?
       format('%.2f', (@transfers[@transaction_number][:credit]))
     else

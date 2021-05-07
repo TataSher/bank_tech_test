@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'transaction'
-require 'balance'
 
 # Account will allow users to make deposits/withdrawals and see statements
 class Account
