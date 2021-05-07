@@ -47,8 +47,7 @@ class Account
     if row_number.zero?
       format('%.2f', (@transfers[row_number][:credit]))
     else
-      format('%.2f',
-             (@transfers[row_number - 1][:credit] - @transfers[row_number][:debit] + @transfers[row_number][:credit]))
+      format('%.2f', (@transfers[row_number - 1][:credit] - @transfers[row_number][:debit] + @transfers[row_number][:credit]))
     end
   end
   
