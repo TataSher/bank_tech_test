@@ -3,19 +3,10 @@
 # Transaction stores the transaction information
 
 class Transaction
-  attr_reader :deposit, :withdrawal, :time
+  attr_reader :sum, :time
   
-  def initialize
-    @deposit = 0
-    @withdrawal = 0
+  def initialize(sum)
+    @sum = sum
     @time = Time.now.strftime('%d/%m/%Y')
-  end
-  
-  def add_funds(sum)
-    @deposit = sum
-  end
-
-  def withdraw_funds(sum)
-    @withdrawal = sum
   end
 end
