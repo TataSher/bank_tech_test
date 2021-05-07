@@ -12,4 +12,10 @@ describe Transaction do
   it 'can add funds to withdrawal record' do
     expect(transaction.withdraw_funds(100)).to eq(100)
   end
+
+  it 'stores information of a deposit' do
+    transaction.add_funds(500)
+    expect(transaction.deposit).to eq(500)
+  end
+
 end

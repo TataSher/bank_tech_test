@@ -3,6 +3,7 @@
 # Transaction stores the transaction information
 
 class Transaction
+  attr_reader :deposit, :withdrawal, :time
   
   def initialize
     @deposit = 0
