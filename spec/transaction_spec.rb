@@ -18,4 +18,9 @@ describe Transaction do
     expect(transaction.deposit).to eq(500)
   end
 
+  it 'stores information of a deposit' do
+    transaction.withdraw_funds(100)
+    expect(transaction.withdrawal).to eq(100)
+  end
+
 end
