@@ -2,18 +2,19 @@
 
 # Account will allow users to make deposits/withdrawals and see statements
 
-require 'transaction'
+require './lib/transaction'
 
 class Account
+
   def initialize
     @transfers = []
   end
 
-  def make_deposit(deposit)
-    @deposit = deposit
-    @transation = Transaction.new(@deposit)
-    @transfers << { date: @transaction.date, credit: @deposit, debit: 0 }
-    "Deposit #{@time.strftime('%d/%m/%Y')}: £#{format('%.2f', @deposit)}"
+  def make_deposit(sum)
+    @sum = sum
+    @transaction = Transaction.new(@sum)
+    @transfers << @transaction.deposit
+    "Deposit #{@transaction.date}: £#{format('%.2f', @sum)}"
   end
 
   def make_withdrawal(withdrawal)

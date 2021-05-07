@@ -2,10 +2,11 @@
 
 require 'account'
 require 'timecop'
+require 'transaction'
 
 describe Account do
   let(:account) { Account.new }
-  let(:transaction) { double :transation, :date =>'04/05/2021', :transation => 500 }
+    let(:transaction_deposit) { double :transation, :date =>'04/05/2021', :sum => 500}
   # let(:transaction_withdrawal) { double :transation, date: '04/05/2021', transation: 100 }
   before do
     Timecop.freeze(Time.new(2021, 0o5, 0o4))
@@ -16,6 +17,7 @@ describe Account do
 
   describe '#make_deposit' do
     it 'can make a deposit' do
+      allow(transaction_deposit).to receive(:deposit).and_return({ date: '04/05/2021', credit: 500, debit: 0 })
       expect(account.make_deposit(500.00)).to include('£500.00')
     end
     it 'shows a date when deposit is made' do

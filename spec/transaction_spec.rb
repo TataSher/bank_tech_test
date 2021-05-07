@@ -22,10 +22,10 @@ describe Transaction do
   end
 
   it 'creates deposit record' do
-    expect(transaction.deposit).to eq({date: '04/05/2021', credit: 100, debit: 0 })
+    expect(transaction.deposit).to eq({ date: '04/05/2021', credit: 100, debit: 0 })
   end
 
   it 'creates withdrawal record' do
-    expect(transaction.withdrawal).to eq({date: '04/05/2021', credit: 0, debit: 100 })
+    expect(transaction.withdrawal).to eq({ date: '04/05/2021', credit: 0, debit: 100 })
   end
 end
