@@ -16,9 +16,9 @@ class Account
   end
 
   def make_withdrawal(sum)
+    @sum = sum
     no_funds_message
 
-    @sum = sum
     @transaction = Transaction.new(@sum)
     @transfers << @transaction.withdrawal
     withdrawal_message
@@ -61,6 +61,6 @@ class Account
   end
 
   def no_funds_message
-    raise 'Insufficient Funds' if sum > balance(@transfers.length - 1).to_f
+    raise 'Insufficient Funds' if @sum > balance(@transfers.length - 1).to_f
   end
 end
