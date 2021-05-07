@@ -8,7 +8,7 @@ class Transaction
   def initialize
     @deposit = 0
     @withdrawal = 0
-    @time = Time.now
+    @time = Time.now.strftime('%d/%m/%Y')
   end
   
   def add_funds(sum)
