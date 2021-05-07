@@ -3,15 +3,13 @@
 require 'balance'
 
 # Calculates balance
-
 class Balance
-
   def initialize(transfers, transaction_number)
     @transfers = transfers
     @transaction_number = transaction_number
     @balance = 0
   end
-  
+
   def show
     if @transaction_number.zero?
       format('%.2f', (@transfers[@transaction_number][:credit]))

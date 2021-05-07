@@ -15,7 +15,7 @@ describe Account do
     Timecop.return
   end
 
-  describe '#make_deposit' do 
+  describe '#make_deposit' do
     it 'shows a date and sum when deposit is made' do
       allow(transaction_deposit).to receive(:deposit).and_return({ date: '04/05/2021', credit: 500, debit: 0 })
       account.make_deposit(500.00)
@@ -34,40 +34,10 @@ describe Account do
     end
   end
   describe '#statement' do
-    it 'prints a statement with balance substracting withdrawal' do
+    it 'shows transaction date, debit, credit abd balance' do
       account.make_deposit(500.00)
       account.make_withdrawal(100)
-      expect(account.statement).to include('400.00')
-    end
-
-    it 'prints a statement with balance adding to deposit ' do
-      account.make_deposit(500.00)
-      account.make_deposit(100)
-      expect(account.statement).to include('600.00')
-    end
-
-    it 'prints the head of the table' do
-      account.make_deposit(500.00)
-      account.make_deposit(100)
-      expect(account.statement).to include('date || credit || debit || balance')
-    end
-
-    it 'prints the date in the table' do
-      account.make_deposit(500.00)
-      account.make_deposit(100)
-      expect(account.statement).to include('04/05/2021')
-    end
-
-    it 'prints the credit in the table' do
-      account.make_deposit(500.00)
-      account.make_deposit(100)
-      expect(account.statement).to include('500.00')
-    end
-
-    it 'prints the credit in the table' do
-      account.make_deposit(500.00)
-      account.make_withdrawal(100)
-      expect(account.statement).to include('100.00')
+      expect(account.statement).to eq(STATEMENT_EXAMPLE_2)
     end
   end
 
@@ -75,10 +45,13 @@ describe Account do
     it 'prints statement' do
       account.make_deposit(500.00)
       account.make_withdrawal(100)
-      expect { account.print_statement(account.statement) }.to output(STATEMENT_EXAMPLE).to_stdout
+      expect { account.print_statement }.to output(STATEMENT_EXAMPLE_1).to_stdout
     end
   end
 end
 
-STATEMENT_EXAMPLE = "date || credit || debit || balance
-04/05/2021 || 500.00 || 0.00 || 500.00 \n04/05/2021 || 0.00 || 100.00 || 400.00 \n"
+STATEMENT_EXAMPLE_1 = "date || credit || debit || balance
+04/05/2021 || 500.00 || 0.00 || 500.00\n04/05/2021 || 0.00 || 100.00 || 400.00\n"
+
+STATEMENT_EXAMPLE_2 = "date || credit || debit || balance
+04/05/2021 || 500.00 || 0.00 || 500.00\n04/05/2021 || 0.00 || 100.00 || 400.00"

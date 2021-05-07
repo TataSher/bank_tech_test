@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 
 require 'transaction'
+require 'statement'
 
 # Account will allow users to make deposits/withdrawals and see statements
 class Account
+  attr_reader :transfers
+
   def initialize
     @transfers = []
   end
@@ -25,32 +28,16 @@ class Account
   end
 
   def statement
-    n = 0
-    display = ['date || credit || debit || balance']
-    while n < @transfers.length
-      date = @transfers[n][:date]
-      credit = format('%.2f', @transfers[n][:credit])
-      debit = format('%.2f', @transfers[n][:debit])
-      display << "#{date} || #{credit} || #{debit} || #{balance(n)} "
-      n += 1
-    end
-    display.join("\n")
+    @statement = Statement.new(@transfers)
+    @statement.show
   end
 
-  def print_statement(statement)
+  def print_statement
     puts statement
   end
 
   private
 
-   def balance(row_number)
-     if row_number.zero?
-       format('%.2f', (@transfers[row_number][:credit]))
-     else
-       format('%.2f', (@transfers[row_number - 1][:credit] - @transfers[row_number][:debit] + @transfers[row_number][:credit]))
-     end
-   end
-  
   def deposit_message
     "Deposit #{@transaction.date}: £#{format('%.2f', @transaction.sum)}"
   end
@@ -60,6 +47,7 @@ class Account
   end
 
   def no_funds_message
-    raise 'Insufficient Funds' if @sum > balance(@transfers.length - 1).to_f
+    balance = Balance.new(@transfers, @transfers.length - 1).show
+    raise 'Insufficient Funds' if @sum > balance.to_f
   end
 end
