@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 
-# Account will allow users to make deposits/withdrawals and see statements
-
 require './lib/transaction'
 
+# Account will allow users to make deposits/withdrawals and see statements
 class Account
-
   def initialize
     @transfers = []
   end
@@ -14,16 +12,16 @@ class Account
     @sum = sum
     @transaction = Transaction.new(@sum)
     @transfers << @transaction.deposit
-    "Deposit #{@transaction.date}: £#{format('%.2f', @sum)}"
+    deposit_message
   end
 
-  def make_withdrawal(withdrawal)
-    raise 'Insufficient Funds' if withdrawal > balance(@transfers.length - 1).to_f
-   
-    @time = Time.now
-    @withdrawal = withdrawal
-    @transfers << { date: @time.strftime('%d/%m/%Y'), credit: 0, debit: @withdrawal }
-    "Withdrawal #{@time.strftime('%d/%m/%Y')}: £#{format('%.2f', @withdrawal)}"
+  def make_withdrawal(sum)
+    no_funds_message
+
+    @sum = sum
+    @transaction = Transaction.new(@sum)
+    @transfers << @transaction.withdrawal
+    withdrawal_message
   end
 
   def statement
@@ -49,7 +47,20 @@ class Account
     if row_number.zero?
       format('%.2f', (@transfers[row_number][:credit]))
     else
-      format('%.2f', (@transfers[row_number - 1][:credit] - @transfers[row_number][:debit] + @transfers[row_number][:credit]))
+      format('%.2f',
+             (@transfers[row_number - 1][:credit] - @transfers[row_number][:debit] + @transfers[row_number][:credit]))
     end
+  end
+  
+  def deposit_message
+    "Deposit #{@transaction.date}: £#{format('%.2f', @transaction.sum)}"
+  end
+
+  def withdrawal_message
+    "Withdrawal #{@transaction.date}: £#{format('%.2f', @transaction.sum)}"
+  end
+
+  def no_funds_message
+    raise 'Insufficient Funds' if sum > balance(@transfers.length - 1).to_f
   end
 end
