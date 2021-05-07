@@ -5,6 +5,8 @@ require 'timecop'
 
 describe Account do
   let(:account) { Account.new }
+  let(:transaction) { double :transation, :date =>'04/05/2021', :transation => 500 }
+  # let(:transaction_withdrawal) { double :transation, date: '04/05/2021', transation: 100 }
   before do
     Timecop.freeze(Time.new(2021, 0o5, 0o4))
   end

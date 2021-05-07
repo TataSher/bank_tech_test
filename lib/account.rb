@@ -1,15 +1,18 @@
 # frozen_string_literal: true
 
 # Account will allow users to make deposits/withdrawals and see statements
+
+require 'transaction'
+
 class Account
   def initialize
     @transfers = []
   end
 
   def make_deposit(deposit)
-    @time = Time.now
     @deposit = deposit
-    @transfers << { date: @time.strftime('%d/%m/%Y'), credit: @deposit, debit: 0 }
+    @transation = Transaction.new(@deposit)
+    @transfers << { date: @transaction.date, credit: @deposit, debit: 0 }
     "Deposit #{@time.strftime('%d/%m/%Y')}: £#{format('%.2f', @deposit)}"
   end
 

@@ -3,10 +3,14 @@
 # Transaction stores the transaction information
 
 class Transaction
-  attr_reader :sum, :time
+  attr_reader :sum, :date
   
   def initialize(sum)
     @sum = sum
-    @time = Time.now.strftime('%d/%m/%Y')
+    @date = Time.now.strftime('%d/%m/%Y')
   end
+
+  def deposit
+    {date: @date, credit: @sum, debit: 0}
+  end 
 end

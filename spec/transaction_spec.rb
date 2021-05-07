@@ -17,9 +17,11 @@ describe Transaction do
     expect(transaction.sum).to eq(100)
   end
 
-
   it 'stores date information' do
-    expect(transaction.time).to eq('04/05/2021')
+    expect(transaction.date).to eq('04/05/2021')
   end
 
+  it 'creates deposit record' do
+    expect(transaction.deposit).to eq({date: '04/05/2021', credit: 100.00, debit: 0 })
+  end
 end
