@@ -13,4 +13,8 @@ class Transaction
   def deposit
     {date: @date, credit: @sum, debit: 0}
   end 
+
+  def withdrawal
+    {date: @date, credit: 0, debit: @sum}
+  end 
 end
