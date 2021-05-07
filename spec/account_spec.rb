@@ -49,7 +49,7 @@ describe Account do
     it 'prints the head of the table' do
       account.make_deposit(500.00)
       account.make_deposit(100)
-      expect(account.statement).to include('date       || credit    || debit   || balance')
+      expect(account.statement).to include('date || credit || debit || balance')
     end
 
     it 'prints the date in the table' do
@@ -80,5 +80,5 @@ describe Account do
   end
 end
 
-STATEMENT_EXAMPLE = "date       || credit    || debit   || balance
+STATEMENT_EXAMPLE = "date || credit || debit || balance
 04/05/2021 || 500.00 || 0.00 || 500.00 \n04/05/2021 || 0.00 || 100.00 || 400.00 \n"

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-require './lib/transaction'
+require 'transaction'
+require 'balance'
 
 # Account will allow users to make deposits/withdrawals and see statements
 class Account
@@ -26,7 +27,7 @@ class Account
 
   def statement
     n = 0
-    display = ['date       || credit    || debit   || balance']
+    display = ['date || credit || debit || balance']
     while n < @transfers.length
       date = @transfers[n][:date]
       credit = format('%.2f', @transfers[n][:credit])
@@ -43,13 +44,13 @@ class Account
 
   private
 
-  def balance(row_number)
-    if row_number.zero?
-      format('%.2f', (@transfers[row_number][:credit]))
-    else
-      format('%.2f', (@transfers[row_number - 1][:credit] - @transfers[row_number][:debit] + @transfers[row_number][:credit]))
-    end
-  end
+   def balance(row_number)
+     if row_number.zero?
+       format('%.2f', (@transfers[row_number][:credit]))
+     else
+       format('%.2f', (@transfers[row_number - 1][:credit] - @transfers[row_number][:debit] + @transfers[row_number][:credit]))
+     end
+   end
   
   def deposit_message
     "Deposit #{@transaction.date}: £#{format('%.2f', @transaction.sum)}"

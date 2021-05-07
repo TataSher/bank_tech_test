@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Statement calculates statement
+# Calculates balance
 
 class Balance
 

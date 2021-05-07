@@ -94,6 +94,7 @@
           null,
           null,
           1,
+          1,
           null,
           null,
           1,
@@ -164,11 +165,18 @@
           null,
           null,
           1,
-          1,
           null,
           1,
           23,
           23,
+          null,
+          null,
+          1,
+          20,
+          null,
+          null,
+          1,
+          20,
           null,
           null,
           1,
@@ -177,26 +185,6 @@
           null,
           1,
           5,
-          null,
-          null
-        ]
-      },
-      "/Users/kingdodo/Projects/My_Portfolio/Week10/bank_tech_test/spec/balance_spec.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          1,
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          null,
-          1,
-          1,
           null,
           null
         ]
@@ -228,11 +216,64 @@
           null
         ]
       },
+      "/Users/kingdodo/Projects/My_Portfolio/Week10/bank_tech_test/spec/balance_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
       "/Users/kingdodo/Projects/My_Portfolio/Week10/bank_tech_test/spec/feature_spec.rb": {
         "lines": [
           1,
           1,
           1,
+          null
+        ]
+      },
+      "/Users/kingdodo/Projects/My_Portfolio/Week10/bank_tech_test/spec/statement_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/kingdodo/Projects/My_Portfolio/Week10/bank_tech_test/lib/statement.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
           null
         ]
       },
@@ -272,6 +313,6 @@
         ]
       }
     },
-    "timestamp": 1620403232
+    "timestamp": 1620412329
   }
 }
